@@ -28,7 +28,13 @@ export class AppComponent {
     ]
 
     addPost(post: Post) {
+        post.id = this.posts.length + 1;
         this.posts.unshift(post);
+        console.log(this.posts);
+    }
+
+    onRemove(number: number) {
+       this.posts = this.posts.filter(item => item.id != number)
     }
 
 }

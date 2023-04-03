@@ -1,6 +1,16 @@
 <div class="border border-secondary rounded p-2 mb-2">
     <h5 class="h5">
-        {{post?.title}}
+        {{post.title}}
     </h5>
-    <p>{{post?.text}}</p>
+    <p>{{post.text}}</p>
+
+    <ng-content></ng-content>
+    <div class="d-flex justify-content-end">
+        <button
+            class="btn btn-outline-danger"
+            (click)="onRemove()"
+        >
+            🚽
+        </button>
+    </div>
 </div>

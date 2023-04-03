@@ -1,6 +1,6 @@
+import { Post } from './../../app.component';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Post } from '../../app.component';
 
 @Component({
     selector: 'app-post-form',
@@ -12,7 +12,7 @@ export class PostFormComponent implements OnInit {
 
     @Output() onAdd = new EventEmitter<Post>();
 
-    form!: FormGroup;
+    form: FormGroup;
 
     ngOnInit() {
         this.form = new FormGroup({
@@ -27,6 +27,7 @@ export class PostFormComponent implements OnInit {
                 title: this.form.controls['titleInput'].value,
                 text: this.form.controls['textInput'].value
             }
+
             this.onAdd.emit(post);
             this.form.reset();
         }
