@@ -1,6 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { Component, ViewEncapsulation } from '@angular/core';
 export interface Post {
     title: string
     text: string
@@ -13,9 +11,9 @@ export interface Post {
     styleUrls: ['./app.component.scss'],
     encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
+
     title = 'Blog';
-    today: number = Date.now();
     posts: Post[] = [
         {
             title: '1 title',
@@ -29,24 +27,8 @@ export class AppComponent implements OnInit {
         }
     ]
 
-    form!: FormGroup;
-
-    ngOnInit() {
-        this.form = new FormGroup({
-            titleInput: new FormControl('', Validators.required),
-            textInput: new FormControl('', Validators.required)
-        });
-
-        console.log(this.form.valid);
+    addPost(post: Post) {
+        this.posts.unshift(post);
     }
 
-    onSubmit() {
-        if(this.form.valid) {
-            this.posts.push({
-                title: this.form.controls['titleInput'].value,
-                text: this.form.controls['textInput'].value,
-                id: this.posts.length + 1
-            });
-        }
-    }
 }

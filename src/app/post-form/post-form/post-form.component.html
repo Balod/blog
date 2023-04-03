@@ -1,0 +1,25 @@
+<form
+    class="mt-4"
+    (submit)="onSubmit()"
+    [formGroup]="form"
+    >
+    <input
+        class="form-control border border-secondary mb-2"
+        type="text"
+        placeholder="Title"
+        formControlName="titleInput"
+    >
+    <input
+        class="form-control border border-secondary mb-2"
+        type="text"
+        placeholder="Text"
+        formControlName="textInput"
+    >
+    <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!form.valid"
+    >
+        Add post
+    </button>
+</form>

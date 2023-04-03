@@ -1,38 +1,18 @@
 <div class="container position-relative pt-5">
-    <p class="main-date position-absolute top-0 right-0">{{ today | date:'dd.MM.yyyy' }}</p>
-
     <h1>
         {{title}}
     </h1>
 
-    <form
-        class="mt-4"
-        (submit)="onSubmit()"
-        [formGroup]="form"
-    >
-        <input
-            class="form-control border border-secondary mb-2"
-            type="text"
-            placeholder="Title"
-            formControlName="titleInput"
-        >
-        <input
-            class="form-control border border-secondary mb-2"
-            type="text"
-            placeholder="Text"
-            formControlName="textInput"
-        >
-        <button
-            class="btn btn-primary"
-            type="submit"
-            [disabled]="!form.valid"
-        >
-            Add post
-        </button>
-    </form>
+    <app-post-form
+        (onAdd)="addPost($event)"
+    ></app-post-form>
+
     <hr class="mt-4 mb-5">
+
     <app-post
         *ngFor="let post of posts"
         [post]='post'
     ></app-post>
+
+    <app-clock></app-clock>
 </div>
