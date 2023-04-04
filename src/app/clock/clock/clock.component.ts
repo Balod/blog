@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 
 export class ClockComponent implements OnInit {
     today: number;
+    show: boolean = true;
 
     ngOnInit() {
         setInterval(() => {this.today = Date.now()}, 1000);
+    }
+
+    onToggle() {
+        this.show = !this.show;
     }
 }

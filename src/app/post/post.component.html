@@ -1,5 +1,11 @@
 <div class="border border-secondary rounded p-2 mb-2">
-    <h5 class="h5" appStyle>
+    <h5
+        class="h5"
+        appStyle="red"
+        [dStyles]="{
+            textDecoration: 'underline',
+            fontWeight: 'bold'
+        }">
         {{post.title}}
     </h5>
     <p>{{post.text}}</p>

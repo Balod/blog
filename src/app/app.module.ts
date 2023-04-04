@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostFormComponent } from './post-form/post-form/post-form.component';
 import { ClockComponent } from './clock/clock/clock.component';
 import { StyleDirective } from './directives/style.directive';
+import { HideDirective } from './directives/hide.directive';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { StyleDirective } from './directives/style.directive';
         PostFormComponent,
         ClockComponent,
         StyleDirective,
+        HideDirective,
     ],
     imports: [
         BrowserModule,

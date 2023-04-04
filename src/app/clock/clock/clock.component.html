@@ -1,3 +1,11 @@
-<p class="position-fixed bottom-0 right-0 p-2">
-    {{ today | date:'dd.MM.yyyy hh:mm:ss' }}
-</p>
+<div class="position-fixed bottom-0 right-0 text-end w-100 p-2">
+    <div class="position-relative">
+        <button
+            class="btn btn-outline-secondary mb-5"
+            (click)="onToggle()"
+        >{{ show ? 'Скрыть' : 'Сколько времени?'}}</button>
+        <p class="position-absolute bottom-0 w-100" *appHide="show">
+            {{ today | date:'dd.MM.yyyy hh:mm:ss' }}
+        </p>
+    </div>
+</div>
