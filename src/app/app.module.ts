@@ -8,13 +8,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostFormComponent } from './post-form/post-form/post-form.component';
 import { ClockComponent } from './clock/clock/clock.component';
+import { StyleDirective } from './directives/style.directive';
 
 @NgModule({
     declarations: [
         AppComponent,
         PostComponent,
         PostFormComponent,
-        ClockComponent
+        ClockComponent,
+        StyleDirective,
     ],
     imports: [
         BrowserModule,
