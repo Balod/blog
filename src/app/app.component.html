@@ -1,16 +1,25 @@
 <div class="container position-relative pt-5">
     <h1>
-        {{title}}
+        {{ title }}
     </h1>
 
     <app-post-form
         (onAdd)="addPost($event)"
     ></app-post-form>
 
+    <button
+        class="btn btn-primary"
+        (click)="increasePost()"
+    >+</button>
+    <button
+        class="btn btn-primary"
+        (click)="decreasePost()"
+    >-</button>
+
     <hr class="mt-4 mb-5">
 
     <app-post
-        *ngFor="let post of posts"
+        *ngFor="let post of filteredPosts"
         [post]='post'
         (remove)="onRemove($event)"
     >

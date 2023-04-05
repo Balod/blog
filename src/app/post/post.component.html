@@ -5,10 +5,9 @@
         [dStyles]="{
             textDecoration: 'underline',
             fontWeight: 'bold'
-        }">
-        {{post.title}}
-    </h5>
-    <p>{{post.text}}</p>
+        }
+    ">{{ post.title | twoOOseven }}</h5>
+    <p>{{ post.text }}</p>
 
     <ng-content></ng-content>
     <div class="d-flex justify-content-end">

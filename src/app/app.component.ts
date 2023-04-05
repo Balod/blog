@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { CounterService } from './services/counter.service';
 export interface Post {
     title: string
     text: string
@@ -12,6 +13,10 @@ export interface Post {
     encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
+    constructor(
+        private counterService: CounterService
+    ){}
+
 
     title = 'Blog';
     posts: Post[] = [
@@ -27,6 +32,8 @@ export class AppComponent {
         }
     ]
 
+    filteredPosts: Post[] = this.posts.slice(0, this.posts.length);
+
     addPost(post: Post) {
         post.id = this.posts.length + 1;
         this.posts.unshift(post);
@@ -35,6 +42,15 @@ export class AppComponent {
 
     onRemove(number: number) {
        this.posts = this.posts.filter(item => item.id != number)
+    }
+
+    increasePost() {
+        this.counterService.increase();
+        this.filteredPosts = this.posts.slice(0, this.counterService.counter);
+    }
+    decreasePost() {
+        this.counterService.decrease();
+        this.filteredPosts  = this.posts.slice(0, this.counterService.counter);
     }
 
 }
