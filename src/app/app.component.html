@@ -1,30 +1,49 @@
 <div class="container position-relative pt-5">
-    <h1>
-        {{ title }}
-    </h1>
+    <div class="d-flex mb-5">
+        <button
+            class="btn btn-secondary"
+            (click)="changeTab()"
+        >
+            Blog
+        </button>
+        <button
+            class="btn btn-secondary ms-4"
+            (click)="changeTab()"
+        >
+            Form
+        </button>
+    </div>
+   <div *ngIf="blog else form">
+        <h1>
+            {{ title }}
+        </h1>
 
-    <app-post-form
-        (onAdd)="addPost($event)"
-    ></app-post-form>
+        <app-post-form
+            class="d-block mb-2"
+            (onAdd)="addPost($event)"
+        ></app-post-form>
 
-    <button
-        class="btn btn-primary"
-        (click)="increasePost()"
-    >+</button>
-    <button
-        class="btn btn-primary m-3"
-        (click)="decreasePost()"
-    >-</button>
+        <button
+            class="btn btn-primary"
+            (click)="increasePost()"
+        >+</button>
+        <button
+            class="btn btn-primary ms-3"
+            (click)="decreasePost()"
+        >-</button>
 
-    <hr class="mt-4 mb-5">
+        <hr class="mt-4 mb-5">
 
-    <app-post
-        *ngFor="let post of filteredPosts"
-        [post]='post'
-        (remove)="onRemove($event)"
-    >
-        <small *ngIf="post.text.length > 50" class="text-muted">Long read</small>
-    </app-post>
-
+        <app-post
+            *ngFor="let post of filteredPosts"
+            [post]='post'
+            (remove)="onRemove($event)"
+        >
+            <small *ngIf="post.text.length > 50" class="text-muted">Long read</small>
+        </app-post>
+   </div>
+   <ng-template #form>
+        <app-form></app-form>
+   </ng-template>
     <app-clock></app-clock>
 </div>

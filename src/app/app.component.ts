@@ -34,6 +34,8 @@ export class AppComponent {
 
     filteredPosts: Post[] = this.posts.slice(0, this.posts.length);
 
+    blog = false;
+
     addPost(post: Post) {
         post.id = this.posts.length + 1;
         this.posts.unshift(post);
@@ -55,6 +57,10 @@ export class AppComponent {
         if(this.counterService.counter >= 0) {
             this.filteredPosts  = this.posts.slice(0, this.counterService.counter);
         }
+    }
+
+    changeTab() {
+        this.blog = !this.blog;
     }
 
 }

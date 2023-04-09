@@ -11,6 +11,7 @@ import { ClockComponent } from './clock/clock/clock.component';
 import { StyleDirective } from './directives/style.directive';
 import { HideDirective } from './directives/hide.directive';
 import { TwoOOsevenPipe } from './pipes/two-o-o-seven.pipe';
+import { FormComponent } from './form/form/form.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { TwoOOsevenPipe } from './pipes/two-o-o-seven.pipe';
         StyleDirective,
         HideDirective,
         TwoOOsevenPipe,
+        FormComponent,
     ],
     imports: [
         BrowserModule,
