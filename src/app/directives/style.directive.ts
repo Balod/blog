@@ -5,7 +5,7 @@ import { Directive, ElementRef, HostBinding, HostListener, Input, Renderer2 } fr
 })
 export class StyleDirective {
 
-    @Input('appStyle') color: string = '';
+    @Input('appStyle') color: string = 'red';
     @Input() dStyles: {textDecoration?: string, fontWeight?: string} = {};
 
     @HostBinding('style.color') elColor: string | null = null;

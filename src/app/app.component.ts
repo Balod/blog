@@ -41,16 +41,20 @@ export class AppComponent {
     }
 
     onRemove(number: number) {
-       this.posts = this.posts.filter(item => item.id != number)
+       this.filteredPosts = this.posts.filter(item => item.id != number)
     }
 
     increasePost() {
         this.counterService.increase();
-        this.filteredPosts = this.posts.slice(0, this.counterService.counter);
+        if(this.counterService.counter >= 0) {
+            this.filteredPosts = this.posts.slice(0, this.counterService.counter);
+        }
     }
     decreasePost() {
         this.counterService.decrease();
-        this.filteredPosts  = this.posts.slice(0, this.counterService.counter);
+        if(this.counterService.counter >= 0) {
+            this.filteredPosts  = this.posts.slice(0, this.counterService.counter);
+        }
     }
 
 }
