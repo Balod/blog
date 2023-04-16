@@ -12,6 +12,7 @@ import { StyleDirective } from './directives/style.directive';
 import { HideDirective } from './directives/hide.directive';
 import { TwoOOsevenPipe } from './pipes/two-o-o-seven.pipe';
 import { FormComponent } from './form/form/form.component';
+import { SwitchComponent } from './switch/switch/switch.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { FormComponent } from './form/form/form.component';
         HideDirective,
         TwoOOsevenPipe,
         FormComponent,
+        SwitchComponent,
     ],
     imports: [
         BrowserModule,

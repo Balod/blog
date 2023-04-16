@@ -25,6 +25,12 @@
             <span *ngIf="email.errors?.['email']">
                 Email is invalid
             </span>
+            <span *ngIf="email.errors?.['restrictedEmail']">
+                Серёге нельзя
+            </span>
+            <span *ngIf="email.errors?.['uniqEmail']">
+                {{email.value}} занят
+            </span>
         </p>
     </div>
     <div class="d-flex flex-column">
@@ -48,11 +54,17 @@
         </p>
     </div>
 
-    <div class="d-flex flex-column border border-secondary-subtle rounded-4 p-2 mt-4">
+    <div
+        class="d-flex flex-column border border-secondary-subtle rounded-4 p-2 mt-4"
+        formGroupName="address"
+    >
         <h3>Adress</h3>
 
         <h5>Country</h5>
-        <select class="form-select mb-2">
+        <select
+            class="form-select mb-2"
+            formControlName="country"
+        >
             <option value="RU">
                 Russia
             </option>
@@ -63,22 +75,58 @@
                 Great Britan
             </option>
         </select>
-        <input type="text" class="form-control mb-2">
-        <button class="btn btn-dark w-25" type="button">
+        <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="capital"
+            [ngClass]="{'is-invalid' :
+                address.controls['capital'].touched &&
+                address.controls['capital'].invalid
+            }"
+        >
+        <button
+            class="btn btn-dark w-25"
+            type="button"
+            (click)="setCapital()"
+        >
             Select capital
         </button>
     </div>
-    <div class="d-flex flex-column border border-secondary-subtle rounded-4 p-2 mt-4">
+    <div
+        class="d-flex flex-column border border-secondary-subtle rounded-4 p-2 mt-4"
+        formGroupName="skills"
+    >
         <h3>Your skills</h3>
-        <button class="btn btn-dark w-25 mb-2" type="button">
+        <button
+            class="btn btn-dark w-25 mb-2"
+            type="button"
+            (click)="addSkill()"
+        >
             Add skill
         </button>
-        <input type="text" class="form-control">
+        <div *ngFor="let control of getControls(); let i = index">
+            <small>{{i + 1}}</small>
+            <input
+                type="text"
+                class="form-control"
+                [formControlName]="i"
+                [ngClass]="{'is-invalid' :
+                    skills.touched &&
+                    skills.invalid
+                }"
+            >
+        </div>
     </div>
+    <app-switch
+        class="d-block my-2"
+        [formControl]="switch"
+        (clickEvent)="changeSwitch($event)"
+        [labelValue]="getSwitchLabelValue()"
+    ></app-switch>
     <button
         type="submit"
         class="btn btn-success w-25 mt-3 ms-auto"
-        [disabled]="form.invalid"
+        [disabled]="form.invalid || form.pending"
     >
         Send
     </button>
