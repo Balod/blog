@@ -13,7 +13,15 @@ import { HideDirective } from './directives/hide.directive';
 import { TwoOOsevenPipe } from './pipes/two-o-o-seven.pipe';
 import { FormComponent } from './form/form/form.component';
 import { SwitchComponent } from './switch/switch/switch.component';
+import { HttpClientFormComponent } from './httpClientForm/http-client-form/http-client-form.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
+const interceptorsProvider = {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi: true
+}
 @NgModule({
     declarations: [
         AppComponent,
@@ -25,6 +33,7 @@ import { SwitchComponent } from './switch/switch/switch.component';
         TwoOOsevenPipe,
         FormComponent,
         SwitchComponent,
+        HttpClientFormComponent,
     ],
     imports: [
         BrowserModule,
@@ -32,8 +41,11 @@ import { SwitchComponent } from './switch/switch/switch.component';
         NgbModule,
         FormsModule,
         ReactiveFormsModule,
+        HttpClientModule,
     ],
-    providers: [],
+    providers: [
+        interceptorsProvider
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

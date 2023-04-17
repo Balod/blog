@@ -1,49 +1,63 @@
 <div class="container position-relative pt-5">
     <div class="d-flex mb-5">
         <button
+            id="blog"
             class="btn btn-secondary"
-            (click)="changeTab()"
+            (click)="changeTab($event)"
         >
             Blog
         </button>
         <button
+            id="form"
             class="btn btn-secondary ms-4"
-            (click)="changeTab()"
+            (click)="changeTab($event)"
         >
             Form
         </button>
-    </div>
-   <div *ngIf="blog else form">
-        <h1>
-            {{ title }}
-        </h1>
-
-        <app-post-form
-            class="d-block mb-2"
-            (onAdd)="addPost($event)"
-        ></app-post-form>
-
         <button
-            class="btn btn-primary"
-            (click)="increasePost()"
-        >+</button>
-        <button
-            class="btn btn-primary ms-3"
-            (click)="decreasePost()"
-        >-</button>
-
-        <hr class="mt-4 mb-5">
-
-        <app-post
-            *ngFor="let post of filteredPosts"
-            [post]='post'
-            (remove)="onRemove($event)"
+            id="httpClientForm"
+            class="btn btn-secondary ms-4"
+            (click)="changeTab($event)"
         >
-            <small *ngIf="post.text.length > 50" class="text-muted">Long read</small>
-        </app-post>
-   </div>
-   <ng-template #form>
-        <app-form></app-form>
-   </ng-template>
+            HttpClient
+        </button>
+    </div>
+    <div [ngSwitch]="tab">
+        <div *ngSwitchCase="'blog'">
+            <h1>
+                {{ title }}
+            </h1>
+
+            <app-post-form
+                class="d-block mb-2"
+                (onAdd)="addPost($event)"
+            ></app-post-form>
+
+            <button
+                class="btn btn-primary"
+                (click)="increasePost()"
+            >+</button>
+            <button
+                class="btn btn-primary ms-3"
+                (click)="decreasePost()"
+            >-</button>
+
+            <hr class="mt-4 mb-5">
+
+            <app-post
+                *ngFor="let post of filteredPosts"
+                [post]='post'
+                (remove)="onRemove($event)"
+            >
+                <small *ngIf="post.text.length > 50" class="text-muted">Long read</small>
+            </app-post>
+        </div>
+        <div *ngSwitchCase="'form'">
+            <app-form></app-form>
+        </div>
+        <div *ngSwitchCase="'httpClientForm'">
+            <app-http-client-form></app-http-client-form>
+        </div>
+    </div>
     <app-clock></app-clock>
 </div>

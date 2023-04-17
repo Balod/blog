@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { CounterService } from './services/counter.service';
+import { TabEnum } from './enums/enums';
 export interface Post {
     title: string
     text: string
@@ -17,8 +18,8 @@ export class AppComponent {
         private counterService: CounterService
     ){}
 
-
     title = 'Blog';
+    tab = 'httpClientForm';
     posts: Post[] = [
         {
             title: '1 title',
@@ -33,8 +34,6 @@ export class AppComponent {
     ]
 
     filteredPosts: Post[] = this.posts.slice(0, this.posts.length);
-
-    blog = false;
 
     addPost(post: Post) {
         post.id = this.posts.length + 1;
@@ -59,8 +58,20 @@ export class AppComponent {
         }
     }
 
-    changeTab() {
-        this.blog = !this.blog;
+    changeTab(event: Event) {
+        let buttonId = (event.target as HTMLElement).id;
+
+        switch (buttonId) {
+            case TabEnum.blog:
+                this.tab = TabEnum.blog;
+                break;
+            case TabEnum.form:
+                this.tab = TabEnum.form;
+                break;
+            case TabEnum.httpClientForm:
+                this.tab = TabEnum.httpClientForm;
+                break;
+        }
     }
 
 }
