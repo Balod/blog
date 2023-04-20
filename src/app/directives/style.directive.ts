@@ -18,10 +18,6 @@ export class StyleDirective {
         this.r.setStyle(this.el.nativeElement, 'color', this.color);
     }
 
-    @HostListener('click', ['$event.target']) onClick(event: Event) {
-        console.log(event);
-    }
-
     @HostListener('mouseenter') onEnter() {
         this.elColor = this.color;
         this.r.setStyle(this.el.nativeElement, 'fontWeight', this.dStyles.fontWeight);

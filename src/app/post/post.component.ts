@@ -1,4 +1,4 @@
-import { Post } from './../app.component';
+import { Post } from '../blog/blog.component';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({

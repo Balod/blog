@@ -58,14 +58,12 @@ export class FormComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log(this.switch);
         this.form.reset();
     }
 
     changeSwitch(event: Event) {
         this.switchValue = !this.switchValue;
         this.switch.setValue(this.switchValue);
-        console.log(this.form);
     }
 
     getSwitchLabelValue(): string {

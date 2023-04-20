@@ -1,4 +1,4 @@
-import { Post } from './../../app.component';
+import { Post } from '../../blog/blog.component';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 

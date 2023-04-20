@@ -36,7 +36,6 @@ export class TodosService {
         .pipe(
             delay(1500),
             catchError(error => {
-                console.log(error.message);
                 return throwError(() => error);
             })
         )
@@ -49,7 +48,7 @@ export class TodosService {
     completeTodo(id: number): Observable<Todo> {
         return this.http.put<Todo>(
             `https://jsonplaceholder.typicode.com/todos/${id}`,
-            { complitet: true}
+            { complited: true}
         )
     }
 }

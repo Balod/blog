@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
     selector: 'app-clock',
@@ -10,7 +11,10 @@ export class ClockComponent implements OnInit {
     show: boolean = true;
 
     ngOnInit() {
-        setInterval(() => {this.today = Date.now()}, 1000);
+        interval(1000)
+        .subscribe(() => {
+            this.today = Date.now()
+        })
     }
 
     onToggle() {

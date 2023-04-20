@@ -16,6 +16,7 @@ import { SwitchComponent } from './switch/switch/switch.component';
 import { HttpClientFormComponent } from './httpClientForm/http-client-form/http-client-form.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { BlogComponent } from './blog/blog.component';
 
 const interceptorsProvider = {
     provide: HTTP_INTERCEPTORS,
@@ -34,6 +35,7 @@ const interceptorsProvider = {
         FormComponent,
         SwitchComponent,
         HttpClientFormComponent,
+        BlogComponent,
     ],
     imports: [
         BrowserModule,

@@ -1,56 +1,41 @@
-<div class="container position-relative pt-5">
-    <div class="d-flex mb-5">
-        <button
-            id="blog"
-            class="btn btn-secondary"
-            (click)="changeTab($event)"
-        >
-            Blog
-        </button>
-        <button
-            id="form"
-            class="btn btn-secondary ms-4"
-            (click)="changeTab($event)"
-        >
-            Form
-        </button>
-        <button
-            id="httpClientForm"
-            class="btn btn-secondary ms-4"
-            (click)="changeTab($event)"
-        >
-            HttpClient
-        </button>
+<nav class="navbar bg-dark" data-bs-theme="dark">
+    <div class="container-fluid justify-content-start">
+        <a class="navbar-brand" href="#">Angular</a>
+        <ul class="navbar-nav flex-row">
+            <li class="nav-item">
+                <button
+                    id="blog"
+                    class="nav-link"
+                    (click)="changeTab($event)"
+                >
+                    Blog
+                </button>
+            </li>
+            <li class="nav-item mx-3">
+                <button
+                    id="form"
+                    class="nav-link"
+                    (click)="changeTab($event)"
+                >
+                    Form
+                </button>
+            </li>
+            <li class="nav-item">
+                <button
+                    id="httpClientForm"
+                    class="nav-link"
+                    (click)="changeTab($event)"
+                >
+                    HttpClient
+                </button>
+            </li>
+        </ul>
     </div>
-    <div [ngSwitch]="tab">
+</nav>
+<div class="container position-relative pt-5">
+    <!-- <div [ngSwitch]="tab">
         <div *ngSwitchCase="'blog'">
-            <h1>
-                {{ title }}
-            </h1>
-
-            <app-post-form
-                class="d-block mb-2"
-                (onAdd)="addPost($event)"
-            ></app-post-form>
-
-            <button
-                class="btn btn-primary"
-                (click)="increasePost()"
-            >+</button>
-            <button
-                class="btn btn-primary ms-3"
-                (click)="decreasePost()"
-            >-</button>
-
-            <hr class="mt-4 mb-5">
-
-            <app-post
-                *ngFor="let post of filteredPosts"
-                [post]='post'
-                (remove)="onRemove($event)"
-            >
-                <small *ngIf="post.text.length > 50" class="text-muted">Long read</small>
-            </app-post>
+            <app-blog></app-blog>
         </div>
         <div *ngSwitchCase="'form'">
             <app-form></app-form>
@@ -58,6 +43,7 @@
         <div *ngSwitchCase="'httpClientForm'">
             <app-http-client-form></app-http-client-form>
         </div>
-    </div>
+    </div> -->
+    <router-outlet></router-outlet>
     <app-clock></app-clock>
 </div>
