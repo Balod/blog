@@ -1,0 +1,18 @@
+<div
+    class="border border-secondary rounded p-2 mb-2"
+    *ngIf="!loading; else loadingBlock"
+>
+    <h5>{{post.title}}</h5>
+    <p>{{post.body}}</p>
+</div>
+
+<ng-template #loadingBlock>
+    <div
+        class="border border-secondary rounded p-2 mb-2"
+    >
+        <div class="placeholder-glow w-100">
+            <h5 class="placeholder w-100"></h5>
+            <p class="placeholder w-100"></p>
+        </div>
+    </div>
+</ng-template>

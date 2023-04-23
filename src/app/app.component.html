@@ -1,49 +1,52 @@
 <nav class="navbar bg-dark" data-bs-theme="dark">
     <div class="container-fluid justify-content-start">
-        <a class="navbar-brand" href="#">Angular</a>
+        <a class="navbar-brand" routerLink="">Angular</a>
         <ul class="navbar-nav flex-row">
             <li class="nav-item">
                 <button
                     id="blog"
                     class="nav-link"
-                    (click)="changeTab($event)"
+                    [routerLink]="['posts']"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}"
+                >
+                    Posts Page
+                </button>
+            </li>
+            <li class="nav-item ms-3">
+                <button
+                    id="blog"
+                    class="nav-link"
+                    [routerLink]="['blog']"
+                    routerLinkActive="active"
                 >
                     Blog
                 </button>
             </li>
-            <li class="nav-item mx-3">
+            <li class="nav-item ms-3">
                 <button
                     id="form"
                     class="nav-link"
-                    (click)="changeTab($event)"
+                    [routerLink]="['form']"
+                    routerLinkActive="active"
                 >
                     Form
                 </button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ms-3">
                 <button
                     id="httpClientForm"
                     class="nav-link"
-                    (click)="changeTab($event)"
+                    [routerLink]="['todos']"
+                    routerLinkActive="active"
                 >
-                    HttpClient
+                    Todo
                 </button>
             </li>
         </ul>
     </div>
 </nav>
 <div class="container position-relative pt-5">
-    <!-- <div [ngSwitch]="tab">
-        <div *ngSwitchCase="'blog'">
-            <app-blog></app-blog>
-        </div>
-        <div *ngSwitchCase="'form'">
-            <app-form></app-form>
-        </div>
-        <div *ngSwitchCase="'httpClientForm'">
-            <app-http-client-form></app-http-client-form>
-        </div>
-    </div> -->
     <router-outlet></router-outlet>
     <app-clock></app-clock>
 </div>
