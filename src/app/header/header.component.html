@@ -1,0 +1,69 @@
+<nav class="navbar bg-dark" data-bs-theme="dark">
+    <div class="container-fluid justify-content-start">
+        <a class="navbar-brand" routerLink="">Angular</a>
+        <ul class="navbar-nav flex-row">
+            <li class="nav-item">
+                <button
+                    class="nav-link"
+                    [routerLink]="['posts']"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}"
+                >
+                    Posts Page
+                </button>
+            </li>
+            <li class="nav-item ms-3">
+                <button
+                    class="nav-link"
+                    [routerLink]="['blog']"
+                    routerLinkActive="active"
+                >
+                    Blog
+                </button>
+            </li>
+            <li class="nav-item ms-3">
+                <button
+                    class="nav-link"
+                    [routerLink]="['form']"
+                    routerLinkActive="active"
+                >
+                    Form
+                </button>
+            </li>
+            <li class="nav-item ms-3">
+                <button
+                    class="nav-link"
+                    [routerLink]="['todos']"
+                    routerLinkActive="active"
+                >
+                    Todo
+                </button>
+            </li>
+            <li class="nav-item ms-3">
+                <button
+                    class="nav-link"
+                    [routerLink]="['about']"
+                    routerLinkActive="active"
+                >
+                    About
+                </button>
+            </li>
+            <li class="nav-item ms-auto">
+                <button
+                    class="nav-link"
+                    (click)="authService.login()"
+                >
+                    Login
+                </button>
+            </li>
+            <li class="nav-item ms-3">
+                <button
+                    class="nav-link"
+                    (click)="authService.logout()"
+                >
+                    Logout
+                </button>
+            </li>
+        </ul>
+    </div>
+</nav>

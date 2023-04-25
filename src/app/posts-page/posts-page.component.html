@@ -1,9 +1,27 @@
 <h1>Posts</h1>
 
-<ul>
-    <li *ngFor="let post of posts">
-        <a [routerLink]="['/posts', post.id]">
-            <h4>{{post.title}}</h4>
+<div class="d-flex my-4">
+    <button
+        class="btn btn-primary me-2"
+        [routerLink]="['/posts']"
+        [queryParams]="{showId: true}"
+        fragment="fragment"
+    >
+        Show IDs
+    </button>
+    <button
+        class="btn btn-primary"
+        (click)="showIdsProgramm()"
+    >
+        Show IDs (program)
+    </button>
+</div>
+<ul class="list-unstyled">
+    <li *ngFor="let post of posts" class="d-flex align-items-center">
+        <span class="pe-2" *ngIf="showId">{{post.id}}</span>
+        <a [routerLink]="['/posts', post.id]" class="d-flex align-items-center">
+            <i class="bi bi-chat-left-text"></i>
+            <h4 class="ps-2">{{post.title}}</h4>
         </a>
     </li>
 </ul>

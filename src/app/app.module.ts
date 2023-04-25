@@ -19,6 +19,11 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { BlogComponent } from './blog/blog.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { PostsPageComponent } from './posts-page/posts-page.component';
+import { AboutComponent } from './about/about.component';
+import { AboutExtraComponent } from './about-extra/about-extra.component';
+import { HeaderComponent } from './header/header.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const interceptorsProvider = {
     provide: HTTP_INTERCEPTORS,
@@ -40,6 +45,11 @@ const interceptorsProvider = {
         BlogComponent,
         PostsPageComponent,
         PostPageComponent,
+        AboutComponent,
+        AboutExtraComponent,
+        HeaderComponent,
+        ErrorPageComponent,
+        HomePageComponent,
     ],
     imports: [
         BrowserModule,

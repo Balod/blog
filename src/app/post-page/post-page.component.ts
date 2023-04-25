@@ -17,14 +17,22 @@ export class PostPageComponent implements OnInit {
 
     ngOnInit() {
         this.loading = true;
+        // this.post = this.route.snapshot.data['post']
 
-        this.route.params
-            .subscribe((params: Params) => {
-                this.postService.getById(params['id'])
-                    .subscribe(response => {
-                        this.post = response;
-                        this.loading = false;
-                    })
-            })
+        this.route.data.subscribe(
+            data => {
+                this.post = data['post'];
+                this.loading = false;
+            }
+        )
+
+        // this.route.params
+        //     .subscribe((params: Params) => {
+        //         this.postService.getById(params['id'])
+        //             .subscribe(response => {
+        //                 this.post = response;
+        //                 this.loading = false;
+        //             })
+        //     })
     }
 }
