@@ -1,7 +1,7 @@
 <nav class="navbar bg-dark" data-bs-theme="dark">
     <div class="container-fluid justify-content-start">
         <a class="navbar-brand" routerLink="">Angular</a>
-        <ul class="navbar-nav flex-row">
+        <ul class="navbar-nav flex-row flex-grow-1">
             <li class="nav-item">
                 <button
                     class="nav-link"
@@ -42,7 +42,7 @@
             <li class="nav-item ms-3">
                 <button
                     class="nav-link"
-                    [routerLink]="['about']"
+                    routerLink="/about"
                     routerLinkActive="active"
                 >
                     About

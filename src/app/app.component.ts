@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { TabEnum } from './enums/enums';
-
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-root',
@@ -9,23 +8,14 @@ import { TabEnum } from './enums/enums';
     encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
-    navButton: HTMLElement;
-    tab = 'httpClientForm';
-
-    changeTab(event: Event) {
-        this.navButton = (event.target as HTMLElement);
-        console.log(event);
-
-        switch (this.navButton.id) {
-            case TabEnum.blog:
-                this.tab = TabEnum.blog;
-                break;
-            case TabEnum.form:
-                this.tab = TabEnum.form;
-                break;
-            case TabEnum.httpClientForm:
-                this.tab = TabEnum.httpClientForm;
-                break;
-        }
+    constructor(
+        private title: Title,
+        private meta: Meta
+    ) {
+        this.title.setTitle('Seryoga Page');
+        this.meta.addTags([
+            { name: 'keywords', content: 'seryoga ass' }
+        ])
     }
+
 }

@@ -7,10 +7,12 @@ export class AuthService {
 
     login() {
         this.isAuth = true;
+        console.log('Authorized', this.isAuth);
     }
 
     logout() {
         this.isAuth = false;
+        console.log('Authorized', this.isAuth);
     }
 
     isLogin() {
