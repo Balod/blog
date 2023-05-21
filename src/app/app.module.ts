@@ -24,6 +24,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ModalComponent } from './modal/modal.component';
 import { RefDirective } from './directives/ref.directive';
+import { CounterComponent } from './counter/counter.component';
+import { RoutingComponent } from './routing/routing.component';
 
 const interceptorsProvider = {
     provide: HTTP_INTERCEPTORS,
@@ -50,6 +52,8 @@ const interceptorsProvider = {
         HomePageComponent,
         ModalComponent,
         RefDirective,
+        CounterComponent,
+        RoutingComponent,
     ],
     imports: [
         BrowserModule,

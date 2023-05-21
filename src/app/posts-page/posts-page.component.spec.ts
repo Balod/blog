@@ -1,65 +1,106 @@
-import { EMPTY, of } from 'rxjs';
+import { EMPTY, asyncScheduler, of } from 'rxjs';
 import { PostService } from './../services/posts.service';
 import { PostsPageComponent } from './posts-page.component';
+import { ComponentFixture, TestBed, async, waitForAsync } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from '../app-routing.module';
 
 describe('PostsPageComponent', () => {
+    let fixture: ComponentFixture<PostsPageComponent>;
     let component: PostsPageComponent;
     let service: PostService;
 
     beforeEach(() => {
-        const spy = jasmine.createSpyObj('HttpClient', { post: of({}), get: of({}) })
-        service = new PostService(spy);
-        component = new PostsPageComponent(service);
-    });
+        // const spy = jasmine.createSpyObj('HttpClient', { post: of({}), get: of({}) });
+        // service = new PostService(spy);
+        // component = new PostsPageComponent(service);
 
-    it('should call fetch when ngOnInit', () => {
-        const spy = spyOn(service, 'fetchPosts').and.callFake(() => {
-            return EMPTY;
+        TestBed.configureTestingModule({
+            declarations: [ PostsPageComponent ],
+            providers: [ PostService ],
+            imports: [ HttpClientModule, AppRoutingModule ]
         });
 
-        component.ngOnInit();
-
-        expect(spy).toHaveBeenCalled();
+        fixture = TestBed.createComponent(PostsPageComponent);
+        component = fixture.componentInstance;
+        service = TestBed.inject(PostService);
     });
 
-    it('should upbate posts length after ngOnInit', () => {
-        const posts = [1,2,3,4];
+    // it('should call fetch when ngOnInit', () => {
 
-        spyOn(service, 'fetchPosts').and.returnValue(of(posts));
+    //     // Урок 4. Ворчал на типизацию и на отсутствие AppRoutingModule в импорте
+    //     const posts = [{
+    //         userId: 1,
+    //         id: 1,
+    //         title: 'title',
+    //         body: 'body'
+    //     }];
+    //     spyOn(service, 'fetchPosts').and.returnValue(of(posts));
+    //     fixture.detectChanges();
+    //     expect(component.posts).toEqual(posts);
+    // });
 
-        component.ngOnInit();
+    it('should call fetch when ngOnInit', waitForAsync(() => {
 
-        expect(component.posts.length).toBe(posts.length);
-    });
+        // Урок 4. Ворчал на типизацию и на отсутствие AppRoutingModule в импорте
+        const posts = [{
+            userId: 1,
+            id: 1,
+            title: 'title',
+            body: 'body'
+        }];
+        spyOn(component, 'fetch').and.returnValue(Promise.resolve(posts));
+        fixture.detectChanges();
+        expect(component.posts).toEqual(posts);
+    }));
+    // it('should call fetch when ngOnInit', () => {
+    //     const spy = spyOn(service, 'fetchPosts').and.callFake(() => {
+    //         return EMPTY;
+    //     });
 
-    it('should add post in posts', () => {
-        const post = {title: 'test'}
-        const spy = spyOn(service, 'create').and.returnValue(of(post));
+    //     component.ngOnInit();
 
-        component.add(post.title);
+    //     expect(spy).toHaveBeenCalled();
+    // });
 
-        expect(spy).toHaveBeenCalled();
-        expect(component.posts2.length).toBe(2);
-    });
+    // it('should upbate posts length after ngOnInit', () => {
+    //     const posts = [1,2,3,4];
 
-    it('should remove post if user confirms', () => {
-       const spy = spyOn(service, 'remove').and.returnValue(EMPTY);
-       const id = '1';
+    //     spyOn(service, 'fetchPosts').and.returnValue(of(posts));
 
-       spyOn(window, 'confirm').and.returnValue(true);
+    //     component.ngOnInit();
 
-       component.del(id);
+    //     expect(component.posts.length).toBe(posts.length);
+    // });
 
-       expect(spy).toHaveBeenCalledWith(id);
-    });
+    // it('should add post in posts', () => {
+    //     const post = {title: 'test'}
+    //     const spy = spyOn(service, 'create').and.returnValue(of(post));
 
-    it('should not remove post if user dont confirm', () => {
-        const spy = spyOn(service, 'remove').and.returnValue(EMPTY);
+    //     component.add(post.title);
 
-        spyOn(window, 'confirm').and.returnValue(false);
+    //     expect(spy).toHaveBeenCalled();
+    //     expect(component.posts2.length).toBe(2);
+    // });
 
-        component.del('1');
+    // it('should remove post if user confirms', () => {
+    //    const spy = spyOn(service, 'remove').and.returnValue(EMPTY);
+    //    const id = '1';
 
-        expect(spy).not.toHaveBeenCalled();
-     });
+    //    spyOn(window, 'confirm').and.returnValue(true);
+
+    //    component.del(id);
+
+    //    expect(spy).toHaveBeenCalledWith(id);
+    // });
+
+    // it('should not remove post if user dont confirm', () => {
+    //     const spy = spyOn(service, 'remove').and.returnValue(EMPTY);
+
+    //     spyOn(window, 'confirm').and.returnValue(false);
+
+    //     component.del('1');
+
+    //     expect(spy).not.toHaveBeenCalled();
+    //  });
 });

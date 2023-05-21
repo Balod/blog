@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Post, PostService } from "../services/posts.service";
 import { ActivatedRoute, Params, Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { firstValueFrom, interval } from "rxjs";
 
 @Component({
     selector: 'app-posts-page',
@@ -13,6 +15,7 @@ export class PostsPageComponent implements OnInit {
         private postService: PostService,
         // private route: ActivatedRoute,
         // private router: Router
+        private http: HttpClient
     ){}
 
     showId = false;
@@ -22,8 +25,9 @@ export class PostsPageComponent implements OnInit {
     posts2 = [{}];
 
     ngOnInit(){
-        this.postService.fetchPosts()
-        .subscribe(response => this.posts = response);
+        this.fetch()
+        // this.postService.fetchPosts()
+        // .subscribe(response => this.posts = response);
 
         // this.route.queryParams.subscribe(
         //     (params: Params) => {
@@ -54,5 +58,11 @@ export class PostsPageComponent implements OnInit {
         if(window.confirm('are you sure?')) {
             this.postService.remove(id);
         }
+    }
+
+    async fetch(): Promise<any> {
+        const source$ = interval(2000);
+        const firstNumber = await firstValueFrom(source$);
+        return firstNumber;
     }
 }

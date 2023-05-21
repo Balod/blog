@@ -19,24 +19,24 @@ export class PostService {
         private http: HttpClient
     ){}
 
-    // fetchPosts(): Observable<Post[]>{
-    //     return this.http.get<Post[]>(
-    //         'https://jsonplaceholder.typicode.com/posts',
-    //         {
-    //             params: new HttpParams().set('_limit', '5')
-    //         }
-    //     )
-    // }
-
-    // getById(id:string): Observable<Post> {
-    //     return this.http.get<Post>(
-    //         `https://jsonplaceholder.typicode.com/posts/${id}`
-    //     )
-    // }
-
-    fetchPosts(): Observable<any[]>{
-        return this.http.get<any[]>('');
+    fetchPosts(): Observable<Post[]>{
+        return this.http.get<Post[]>(
+            'https://jsonplaceholder.typicode.com/posts',
+            {
+                params: new HttpParams().set('_limit', '5')
+            }
+        )
     }
+
+    getById(id:string): Observable<Post> {
+        return this.http.get<Post>(
+            `https://jsonplaceholder.typicode.com/posts/${id}`
+        )
+    }
+
+    // fetchPosts(): Observable<any[]>{
+    //     return this.http.get<any[]>('');
+    // }
 
     create(post: object): Observable<any> {
         return this.http.post('', {post});

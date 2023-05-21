@@ -3,14 +3,12 @@
         <a class="navbar-brand" routerLink="">Angular</a>
         <ul class="navbar-nav flex-row flex-grow-1">
             <li class="nav-item">
-                <button
+                <a
                     class="nav-link"
-                    [routerLink]="['posts']"
-                    routerLinkActive="active"
-                    [routerLinkActiveOptions]="{exact: true}"
+                    routerLink="/posts"
                 >
                     Posts Page
-                </button>
+                </a>
             </li>
             <li class="nav-item ms-3">
                 <button
