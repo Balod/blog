@@ -13,9 +13,8 @@ export class PostsPageComponent implements OnInit {
 
     constructor(
         private postService: PostService,
-        // private route: ActivatedRoute,
-        // private router: Router
-        private http: HttpClient
+        private route: ActivatedRoute,
+        private router: Router
     ){}
 
     showId = false;
@@ -25,15 +24,14 @@ export class PostsPageComponent implements OnInit {
     posts2 = [{}];
 
     ngOnInit(){
-        this.fetch()
-        // this.postService.fetchPosts()
-        // .subscribe(response => this.posts = response);
+        this.postService.fetchPosts()
+        .subscribe(response => this.posts = response);
 
-        // this.route.queryParams.subscribe(
-        //     (params: Params) => {
-        //         // Способ приобразования вызывает вопросы
-        //         this.showId = !!params['showId'];
-        //     });
+        this.route.queryParams.subscribe(
+            (params: Params) => {
+                // Способ приобразования вызывает вопросы
+                this.showId = !!params['showId'];
+            });
     }
 
     showIdsProgramm() {
@@ -58,11 +56,5 @@ export class PostsPageComponent implements OnInit {
         if(window.confirm('are you sure?')) {
             this.postService.remove(id);
         }
-    }
-
-    async fetch(): Promise<any> {
-        const source$ = interval(2000);
-        const firstNumber = await firstValueFrom(source$);
-        return firstNumber;
     }
 }

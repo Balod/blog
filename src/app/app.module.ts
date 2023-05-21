@@ -26,6 +26,8 @@ import { ModalComponent } from './modal/modal.component';
 import { RefDirective } from './directives/ref.directive';
 import { CounterComponent } from './counter/counter.component';
 import { RoutingComponent } from './routing/routing.component';
+import { ColorDirective } from './directives/color.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const interceptorsProvider = {
     provide: HTTP_INTERCEPTORS,
@@ -54,6 +56,7 @@ const interceptorsProvider = {
         RefDirective,
         CounterComponent,
         RoutingComponent,
+        ColorDirective,
     ],
     imports: [
         BrowserModule,
@@ -62,6 +65,7 @@ const interceptorsProvider = {
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        BrowserAnimationsModule,
     ],
     providers: [
         interceptorsProvider

@@ -40,28 +40,28 @@ describe('PostsPageComponent', () => {
     //     expect(component.posts).toEqual(posts);
     // });
 
-    it('should call fetch when ngOnInit', waitForAsync(() => {
+    // it('should call fetch when ngOnInit', waitForAsync(() => {
 
-        // Урок 4. Ворчал на типизацию и на отсутствие AppRoutingModule в импорте
-        const posts = [{
-            userId: 1,
-            id: 1,
-            title: 'title',
-            body: 'body'
-        }];
-        spyOn(component, 'fetch').and.returnValue(Promise.resolve(posts));
-        fixture.detectChanges();
-        expect(component.posts).toEqual(posts);
-    }));
-    // it('should call fetch when ngOnInit', () => {
-    //     const spy = spyOn(service, 'fetchPosts').and.callFake(() => {
-    //         return EMPTY;
-    //     });
+    //     // Урок 4. Ворчал на типизацию и на отсутствие AppRoutingModule в импорте
+    //     const posts = [{
+    //         userId: 1,
+    //         id: 1,
+    //         title: 'title',
+    //         body: 'body'
+    //     }];
+    //     spyOn(component, 'fetch').and.returnValue(Promise.resolve(posts));
+    //     fixture.detectChanges();
+    //     expect(component.posts).toEqual(posts);
+    // }));
+    it('should call fetch when ngOnInit', () => {
+        const spy = spyOn(service, 'fetchPosts').and.callFake(() => {
+            return EMPTY;
+        });
 
-    //     component.ngOnInit();
+        component.ngOnInit();
 
-    //     expect(spy).toHaveBeenCalled();
-    // });
+        expect(spy).toHaveBeenCalled();
+    });
 
     // it('should upbate posts length after ngOnInit', () => {
     //     const posts = [1,2,3,4];
