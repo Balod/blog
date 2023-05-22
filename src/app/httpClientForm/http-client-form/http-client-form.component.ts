@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { Todo, TodosService } from 'src/app/services/todos.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { Todo, TodosService } from 'src/app/services/todos.service';
 })
 
 export class HttpClientFormComponent implements OnInit{
+
+    @HostBinding('class') class = 'layered-content__item';
 
     todos: Todo[] = [];
 

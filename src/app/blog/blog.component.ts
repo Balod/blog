@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { CounterService } from 'src/app/services/counter.service';
 
 export interface Post {
@@ -16,6 +16,8 @@ export class BlogComponent {
     constructor(
         private counterService: CounterService
     ){}
+
+    @HostBinding('class') class = 'layered-content__item';
 
     title = 'Blog';
 

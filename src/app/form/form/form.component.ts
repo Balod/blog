@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MyValidators } from 'src/app/validators/my.validators';
 
@@ -7,6 +7,8 @@ import { MyValidators } from 'src/app/validators/my.validators';
     templateUrl: './form.component.html',
 })
 export class FormComponent implements OnInit {
+    @HostBinding('class') class = 'layered-content__item';
+
     form: FormGroup;
     email: FormControl;
     pass: FormControl;

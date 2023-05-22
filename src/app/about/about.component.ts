@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -20,6 +20,8 @@ export class AboutComponent {
     form: FormGroup;
 
     @Output() counterEmmiter = new EventEmitter<number>();
+
+    @HostBinding('class') class = 'layered-content__item';
 
     increment() {
         this.counter ++;

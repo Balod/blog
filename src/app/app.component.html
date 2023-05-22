@@ -1,5 +1,8 @@
 <app-header></app-header>
-<div class="container position-relative pt-5">
-    <router-outlet></router-outlet>
+<div
+    [@routAnimation]="getRouteAnimationState(outlet)"
+    class="container layered-content position-relative pt-5"
+>
+    <router-outlet #outlet="outlet"></router-outlet>
     <app-clock></app-clock>
 </div>

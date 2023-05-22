@@ -5,21 +5,22 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     selector: 'app-modal',
     templateUrl: './modal.component.html',
     animations: [
-        trigger('modal', [
+        trigger('modalFade', [
+            state('in', style({opacity: 0})),
             transition(':enter', [
-                style({ opacity: '0'}),
-                animate(300, style(({opacity: '1'})))
+                style({opacity: 0}),
+                animate(1000, style({opacity: 1}))
             ]),
             transition(':leave', [
-                animate(300, style({ opacity: '0'}))
+                style({opacity: 1}),
+                animate(1000, style({opacity: 0}))
             ])
         ])
-    ]
+    ],
+    host: {'[@modalFade]': 'in'}
 })
 export class ModalComponent {
 
     @Output('onClose') onClose = new EventEmitter;
     @Input('title') title = 'Default title';
-
-    // modalState = 'end';
 }

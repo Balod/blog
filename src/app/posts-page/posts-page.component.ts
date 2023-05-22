@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostBinding, OnInit } from "@angular/core";
 import { Post, PostService } from "../services/posts.service";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
@@ -16,6 +16,8 @@ export class PostsPageComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router
     ){}
+
+    @HostBinding('class') class = 'layered-content__item';
 
     showId = false;
 

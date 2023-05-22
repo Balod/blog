@@ -1,13 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, HostBinding, ViewChild } from '@angular/core';
 import { RefDirective } from '../directives/ref.directive';
 import { ModalComponent } from '../modal/modal.component';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
     selector: 'app-home-page',
-    templateUrl: './home-page.component.html'
+    templateUrl: './home-page.component.html',
 })
 export class HomePageComponent {
     @ViewChild(RefDirective) refDir: RefDirective;
+    @HostBinding('class') class = 'layered-content__item';
 
     showModal() {
         const component = this.refDir.containerRef.createComponent(ModalComponent);

@@ -1,11 +1,14 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { RouterOutlet } from '@angular/router';
+import { routAnimation } from './app-routing.animation';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     encapsulation: ViewEncapsulation.None,
+    animations: [routAnimation]
 })
 export class AppComponent {
     constructor(
@@ -16,6 +19,14 @@ export class AppComponent {
         this.meta.addTags([
             { name: 'keywords', content: 'seryoga ass' }
         ])
+    }
+
+    getRouteAnimationState(outlet: RouterOutlet) {
+        return (
+            outlet &&
+            outlet.activatedRouteData &&
+            outlet.activatedRouteData['animation']
+        )
     }
 
 }

@@ -12,19 +12,21 @@ import { PostResolver } from './shared/post.resolver';
 
 const routes: Routes = [
     {path: '', component: HomePageComponent},
-    {path: 'posts', component: PostsPageComponent},
+    {path: 'posts', component: PostsPageComponent, data: {animation: 'posts'}},
     {path: 'posts/:id', component: PostPageComponent, resolve: {post: PostResolver}},
-    {path: 'blog', component: BlogComponent},
-    {path: 'form', component: FormComponent},
+    {path: 'blog', component: BlogComponent, data: {animation: 'blog'}},
+    {path: 'form', component: FormComponent, data: {animation: 'form'}},
     {
         path: 'todos',
         component: HttpClientFormComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: {animation: 'blog'}
     },
     {path: 'error', component: ErrorPageComponent},
     {
         path: 'about',
-        loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
+        loadChildren: () => import('./about/about.module').then(m => m.AboutModule),
+        data: {animation: 'about'}
     },
     {path: '**', redirectTo: '/error'}
 ];
